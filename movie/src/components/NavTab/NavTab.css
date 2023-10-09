@@ -1,0 +1,15 @@
+.navtab {
+  background-color: #272727;
+  padding-bottom: 30px;
+  border-radius: 0 0 10px 10px;
+  width: 94%;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+@media screen and (max-width: 500px) {
+  .navtab {
+    padding-bottom: 20px;
+    max-width: 292px;
+  }
+}

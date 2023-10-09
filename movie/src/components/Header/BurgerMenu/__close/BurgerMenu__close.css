@@ -1,0 +1,25 @@
+.burger__close {
+  background-image: url("../../../../images/exit.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 22px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.burger__close:hover {
+  opacity: 70%;
+}
+
+@media screen and (max-width: 500px) {
+  .burger__close {
+    right: 13px;
+    top: 13px;
+  }
+}

@@ -1,0 +1,16 @@
+.about-me__title {
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  font-size: 22px;
+  border-bottom: solid 1px #dadada;
+  padding-bottom: 23px;
+}
+
+@media screen and (max-width: 500px) {
+  .about-me__title {
+    font-size: 18px;
+    padding-bottom: 27px;
+  }
+}

@@ -1,0 +1,26 @@
+.portfolio__icon {
+  margin-top: 16px;
+  margin-right: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio__icon:hover {
+  opacity: 70%;
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio__icon {
+    margin-top: 18px;
+    margin-right: 5px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .portfolio__icon {
+    width: 10px;
+    height: 19px;
+    margin-top: 3px;
+    margin-right: 4px;
+  }
+}

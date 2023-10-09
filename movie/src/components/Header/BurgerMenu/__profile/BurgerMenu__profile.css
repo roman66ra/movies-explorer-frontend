@@ -1,0 +1,10 @@
+.burger__profile {
+  padding: 8px 20px;
+  border-radius: 20px;
+  background-color: #313131;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  color: white;
+  text-decoration: none;
+}

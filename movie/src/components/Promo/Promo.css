@@ -1,0 +1,22 @@
+.promo {
+  padding: 160px 0 151px;
+  background-color: #272727;
+  border-radius: 10px 10px 0 0;
+  margin: 20px auto 0;
+  max-width: 1200px;
+  width: 94%;
+}
+
+@media screen and (max-width: 768px) {
+  .promo {
+    padding: 347px 0 314px;
+    max-width: 728px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .promo {
+    padding: 220px 0px 210px;
+    max-width: 292px;
+  }
+}

@@ -1,0 +1,20 @@
+.movies-card__description {
+  margin-top: 14px;
+  padding: 0 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .movies-card__description {
+    margin-top: 25px;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .movies-card__description {
+    margin-top: 16px;
+    padding: 0;
+  }
+}

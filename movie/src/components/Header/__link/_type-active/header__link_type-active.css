@@ -1,0 +1,10 @@
+.header__link_type-active {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .header__link_type-active {
+    border-bottom: 2px #fff solid;
+    padding-bottom: 8px;
+  }
+}

@@ -1,0 +1,14 @@
+.navtab__list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  list-style: none;
+}
+
+@media screen and (max-width: 500px) {
+  .navtab__list {
+    gap: 6px;
+  }
+}

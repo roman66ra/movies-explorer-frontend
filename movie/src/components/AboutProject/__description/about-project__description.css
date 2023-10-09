@@ -1,0 +1,20 @@
+.about-project__description {
+  display: flex;
+  margin-top: 70px;
+  gap: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project__description {
+    margin-top: 68px;
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .about-project__description {
+    flex-wrap: wrap;
+    margin-top: 61px;
+    gap: 57px;
+  }
+}

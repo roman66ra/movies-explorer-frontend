@@ -1,0 +1,29 @@
+.about-me__git {
+  margin-top: 99px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  letter-spacing: -0.065em;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.about-me__git:hover {
+  opacity: 70%;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__git {
+    margin-top: 87px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .about-me__git {
+    margin-top: 40px;
+  }
+}

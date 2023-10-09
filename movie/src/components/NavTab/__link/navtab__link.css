@@ -1,0 +1,20 @@
+.navtab__link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.navtab__link:hover {
+  opacity: 70%;
+}
+
+@media screen and (max-width: 500px) {
+  .navtab__link {
+    font-size: 10px;
+  }
+}

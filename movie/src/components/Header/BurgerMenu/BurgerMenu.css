@@ -1,0 +1,27 @@
+.burger {
+  padding: 159px 0 90px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: #202020;
+  height: 63%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+}
+
+.burger_opened {
+  transform: translateX(0);
+  z-index: 1;
+}
+
+@media screen and (max-width: 544px) {
+  .burger {
+    padding: 144px 0 46px;
+    width: 100%;
+    height: 80%;
+  }
+}

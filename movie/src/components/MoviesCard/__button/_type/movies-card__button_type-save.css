@@ -1,0 +1,14 @@
+.movies-card__button_type_save {
+  display: block;
+  background-color: #ee3465;
+  background-image: url(../../../../images/save.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 10.5px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border-radius: 30px;
+  border: none;
+  color: #fff;
+}

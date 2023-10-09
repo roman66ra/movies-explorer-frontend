@@ -1,0 +1,16 @@
+.about-project__line-column_type_one {
+  width: 228px;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project__line-column_type_one {
+    width: 140px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .about-project__line-column_type_one {
+    width: 100px;
+  }
+}
