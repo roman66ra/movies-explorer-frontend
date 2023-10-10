@@ -14,6 +14,7 @@
 
 .portfolio__link {
   color: white;
+  width: 100%;
   text-decoration: none;
   font-size: 30px;
   font-weight: 400;
@@ -21,6 +22,9 @@
   letter-spacing: -0.04em;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  background-image: url(../../images/portfolio_link.svg);
+  background-repeat: no-repeat;
+  background-position: 99.5%;
 
 }
 
@@ -42,10 +46,7 @@
   border-bottom: solid 1px #424242;
   padding-bottom: 19px;
   justify-content: space-between;
-  background-image: url(../../images/portfolio_link.svg);
-  background-repeat: no-repeat;
-  background-position: right;
-  background-position: 99.5% 30%;
+
 }
 
 .portfolio__page:last-of-type {
