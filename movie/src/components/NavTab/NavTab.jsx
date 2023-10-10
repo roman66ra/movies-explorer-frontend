@@ -1,6 +1,4 @@
-import './NavTab.css';
-
-function NavTab() {
+export default function NavTab() {
 	return (
 		<nav className="navtab">
 			<ul className="navtab__list">
@@ -17,5 +15,3 @@ function NavTab() {
 		</nav>
 	)
 }
-
-export default NavTab;

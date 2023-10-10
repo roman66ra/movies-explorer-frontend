@@ -46,7 +46,7 @@ function MoviesCard({ movieData }) {
       </button>
 
       <div className="movies-card__description">
-        <p className="movies-card__name">{movieData.nameRU}</p>
+        <h2 className="movies-card__name">{movieData.nameRU}</h2>
         <span
           className={`movies-card__duration ${
             pathname === "/saved-movies" ? "movies-card__duration-last" : ""

@@ -30,9 +30,9 @@ export default function Profile({ handleLogout, isLogged }) {
   return (
     <>
       <Header isLogged={isLogged}></Header>
-      <section className="profile">
-        <h2 className="profile__title">{`Привет, ${name}!`}</h2>
-        <form className="profile__form">
+      <main className="profile">
+        <h1 className="profile__title">{`Привет, ${name}!`}</h1>
+        <form className="profile__form" name="profile">
           <label className="profile__item">
             <span className="profile__text">Имя</span>
             <input
@@ -93,7 +93,7 @@ export default function Profile({ handleLogout, isLogged }) {
             Сохранить
           </button>
         </div>
-      </section>
+      </main>
     </>
   );
 }

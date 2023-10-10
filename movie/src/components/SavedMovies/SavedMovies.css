@@ -5,12 +5,12 @@
 
 @media screen and (max-width: 768px) {
   .saved-movies {
-    padding-bottom: 175px;
+    padding-bottom: 96px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .saved-movies {
-    padding-bottom: 150px;
+    padding-bottom: 68px;
   }
 }

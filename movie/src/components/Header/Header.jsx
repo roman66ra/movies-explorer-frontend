@@ -21,7 +21,7 @@ export default function Header({ link, isLogged }) {
       </NavLink>
       {isLogged ? (
         <>
-          <div className="header__links">
+          <nav className="header__links">
             <NavLink
               className={`header__link ${
                 pathname === "/movies" ? "header__link_type-active" : ""
@@ -38,7 +38,7 @@ export default function Header({ link, isLogged }) {
             >
               Сохранённые фильмы
             </NavLink>
-          </div>
+          </nav>
           <NavLink
             to={"/profile"}
             replace
@@ -54,21 +54,23 @@ export default function Header({ link, isLogged }) {
           ></BurgerMenu>
         </>
       ) : (
-        <ul className="header__notlogged-menu">
-          <li className="header__notlogged-menu__item">
-            <NavLink className="header__notlogged-menu__link" to="/signup">
-              Регистрация
-            </NavLink>
-          </li>
-          <li className="header__notlogged-menu__item">
-            <NavLink
-              className="header__notlogged-menu__link header__notlogged-menu__link_type_login"
-              to="/signin"
-            >
-              Войти
-            </NavLink>
-          </li>
-        </ul>
+        <nav className="header__notlogged-nav">
+          <ul className="header__notlogged-menu">
+            <li className="header__menu-item">
+              <NavLink className="header__menu-link" to="/signup">
+                Регистрация
+              </NavLink>
+            </li>
+            <li className="header__menu-item">
+              <NavLink
+                className="header__menu-link header__menu-link_type_login"
+                to="/signin"
+              >
+                Войти
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
       )}
     </header>
   );

@@ -1,5 +1,3 @@
-import "./AboutProject.css";
-
 export default function aboutProject() {
   return (
     <div className="about-project" id="about-project">
@@ -25,14 +23,14 @@ export default function aboutProject() {
         </div>
       </div>
       <div className="about-project__line">
-        <div className="about-project__line-column about-project__line-column_type_one">
-          <p className="about-project__week about-project__week_one">
+        <div className="about-project__line-column about-project__line-column_type_theme-green">
+          <p className="about-project__week about-project__week-theme-green">
             1 неделя
           </p>
           <p className="about-project__week-text">Back-end</p>
         </div>
-        <div className="about-project__line-column about-project__line-column_type_two">
-          <p className="about-project__week about-project__week_two">
+        <div className="about-project__line-column about-project__line-column_type_theme-grey">
+          <p className="about-project__week about-project__week-theme-grey">
             4 недели
           </p>
           <p className="about-project__week-text">Front-end</p>

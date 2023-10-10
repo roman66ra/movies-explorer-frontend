@@ -7,7 +7,54 @@
   max-width: 1200px;
 }
 
+.navtab__link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.navtab__link:hover {
+  opacity: 70%;
+}
+
+.navtab__list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  list-style: none;
+}
+
+.navtab__title {
+  background-color: #303030;
+  border-radius: 10px;
+  line-height: 2;
+  text-align: center;
+  width: 96px;
+  height: 36px;
+}
+
 @media screen and (max-width: 500px) {
+  .navtab__title {
+    width: 82px;
+    height: 26px;
+    line-height: 1.7;
+  }
+
+  .navtab__list {
+    gap: 6px;
+  }
+
+  .navtab__link {
+    font-size: 10px;
+  }
+
   .navtab {
     padding-bottom: 20px;
     max-width: 292px;

@@ -1,7 +1,6 @@
-import "./AboutMe.css";
 import picture from "../../images/student-picture.png";
 
-function AboutMe() {
+export default function AboutMe() {
   return (
     <div className="about-me" id="about-me">
       <h2 className="about-me__title">Студент</h2>
@@ -18,7 +17,7 @@ function AboutMe() {
           </p>
           <a
             href="https://github.com/"
-            className="about-me__git"
+            className="about-me__link"
             rel="noreferrer"
             target="_blank"
           >
@@ -34,5 +33,3 @@ function AboutMe() {
     </div>
   );
 }
-
-export default AboutMe;

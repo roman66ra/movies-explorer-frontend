@@ -7,14 +7,71 @@
   margin: auto;
 }
 
+.search-form__text {
+  background-color: #2f2f2f;
+  height: 50px;
+  border-radius: 8px;
+  padding-left: 20px;
+  border: 0;
+  margin-right: 10px;
+  color: white;
+  outline: none;
+  flex: 1064px;
+  max-width: 1084px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.search-form__submit {
+  background-image: url(../../images/find-3.png);
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 6px;
+  flex: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 2px;
+}
+
+.search-form__text:focus {
+  outline: 1px solid #fff;
+}
+
+.search-form__submit:hover {
+  opacity: 80%;
+}
+
+.search-form__submit:focus {
+  outline: 1px solid #fff;
+}
+
+
 @media screen and (max-width: 768px) {
   .search-form {
     padding: 77px 30px 0;
+  }
+
+  .search-form__text {
+    flex: 654px;
+  }
+
+  .search-form__submit {
+    margin-bottom: 0;
   }
 }
 
 @media screen and (max-width: 500px) {
   .search-form {
     padding: 86px 15px 0;
+  }
+
+  .search-form__text {
+    height: 40px;
+    flex: 238px;
+    padding-left: 12px;
   }
 }

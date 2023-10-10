@@ -9,6 +9,7 @@ export default function BurgerMenu({ isBurgerOpened, handleCloseBurger }) {
         onClick={handleCloseBurger}
         type="button"
       />
+      <nav className="burger__nav">
       <ul className="burger__list">
         <li className="burger__item">
           <NavLink to="/" className="burger__link">
@@ -26,6 +27,7 @@ export default function BurgerMenu({ isBurgerOpened, handleCloseBurger }) {
           </NavLink>
         </li>
       </ul>
+      </nav>
       <NavLink to="/profile" className="burger__profile">
         Аккаунт
       </NavLink>

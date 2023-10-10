@@ -1,9 +1,0 @@
-.burger__item {
-  width: 520px;
-}
-
-@media screen and (max-width: 500px) {
-  .burger__item {
-    width: 320px;
-  }
-}

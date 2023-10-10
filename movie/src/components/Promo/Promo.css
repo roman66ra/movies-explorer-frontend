@@ -7,10 +7,27 @@
   width: 94%;
 }
 
+.promo__title {
+  margin: 0 auto;
+  max-width: 730px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  color: white;
+}
+
 @media screen and (max-width: 768px) {
   .promo {
     padding: 347px 0 314px;
     max-width: 728px;
+  }
+
+  .promo__title {
+    max-width: 680px;
+    font-size: 40px;
+    line-height: 52px;
   }
 }
 
@@ -18,5 +35,10 @@
   .promo {
     padding: 220px 0px 210px;
     max-width: 292px;
+  }
+
+  .promo__title {
+    font-size: 29px;
+    line-height: 37px;
   }
 }
