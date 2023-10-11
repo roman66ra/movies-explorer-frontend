@@ -10,7 +10,6 @@ function Register({ onRegister }) {
   return (
     <main className="register">
       <Link
-        alt="Логотип приложения (зелёное кольцо)"
         className="register__logo"
         to={"/"}
       ></Link>

@@ -68,7 +68,6 @@ export default function Profile({ handleLogout, isLogged }) {
         >
           <button
             className="profile__button-submit"
-            form="profile__form"
             type="submit"
             onClick={handleHideButton}
           >

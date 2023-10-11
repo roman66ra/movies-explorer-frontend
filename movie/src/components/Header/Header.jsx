@@ -42,7 +42,6 @@ export default function Header({ link, isLogged }) {
           <NavLink
             to={"/profile"}
             replace
-            type="submit"
             className="header__account"
           >
             Аккаунт

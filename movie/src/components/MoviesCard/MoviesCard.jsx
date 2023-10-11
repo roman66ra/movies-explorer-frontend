@@ -28,7 +28,7 @@ function MoviesCard({ movieData }) {
         onMouseEnter={onMouseEnterHandler}
         onMouseLeave={onMouseLeaveHandler}
         className="movies-card__image"
-        alt={movieData.nameRu}
+        alt={movieData.nameRU}
         src={movieData.image}
       />
       <button

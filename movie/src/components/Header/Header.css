@@ -137,4 +137,8 @@
   .header__logo {
     margin-top: 5px;
   }
+
+  .header__notlogged-menu{
+    gap: 15px
+  }
 }

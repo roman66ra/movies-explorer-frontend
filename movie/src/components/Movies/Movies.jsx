@@ -8,16 +8,20 @@ import movies from "../../constants/movies-for-render";
 function Movies({ isLogged }) {
   isLogged = true;
   return (
-    <div className="movies">
+    <>
       <Header isLogged={isLogged}></Header>
-      <SearchForm></SearchForm>
-      <FilterCheckbox></FilterCheckbox>
-      <MoviesCardList movies={movies}></MoviesCardList>
-      <button className="movies__button-more" type="button">
-        Ещё
-      </button>
+      <main className="movies">
+        <SearchForm></SearchForm>
+        <FilterCheckbox></FilterCheckbox>
+        <MoviesCardList movies={movies}></MoviesCardList>
+        <section className="movies__button">
+          <button className="movies__button-more" type="button">
+            Ещё
+          </button>
+        </section>
+      </main>
       <Footer></Footer>
-    </div>
+    </>
   );
 }
 

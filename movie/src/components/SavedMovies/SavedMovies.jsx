@@ -10,11 +10,11 @@ export default function SavedMovies({ isLogged }) {
   return (
     <>
       <Header isLogged={isLogged}></Header>
-      <div className="saved-movies">
+      <main className="saved-movies">
         <SearchForm></SearchForm>
         <FilterCheckbox></FilterCheckbox>
         <MoviesCardList movies={movies}></MoviesCardList>
-      </div>
+      </main>
       <Footer></Footer>
     </>
   );

@@ -86,7 +86,7 @@
 
 @media screen and (max-width: 500px) {
   .portfolio {
-    padding: 70px 14px 69px;
+    padding: 70px 14px 50px;
   }
 
   .portfolio__title {
@@ -99,6 +99,8 @@
   .portfolio__link {
     font-size: 18px;
     line-height: 28px;
+    background-size: 12px;
+    background-position: 99%
   }
 
   .portfolio__icon {
