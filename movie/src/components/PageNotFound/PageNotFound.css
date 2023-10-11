@@ -14,6 +14,12 @@
   font-weight: 400;
   line-height: 17px;
   letter-spacing: 0em;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.page-not-found__back-link:hover {
+  opacity: 70%;
 }
 
 .page-not-found__subtitle {
@@ -62,4 +68,3 @@
     padding: 409px 0 60px;
   }
 }
-
