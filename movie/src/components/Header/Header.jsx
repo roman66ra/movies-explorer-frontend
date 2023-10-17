@@ -4,9 +4,10 @@ import BurgerButton from "./BurgerButton/BurgerButton";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
 import { useState } from "react";
 
-export default function Header({ link, isLogged }) {
+export default function Header({ isLogged }) {
   const { pathname } = useLocation();
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
+
   const handleOpenBurger = () => {
     setIsBurgerOpened(true);
   };
@@ -39,11 +40,7 @@ export default function Header({ link, isLogged }) {
               Сохранённые фильмы
             </NavLink>
           </nav>
-          <NavLink
-            to={"/profile"}
-            replace
-            className="header__account"
-          >
+          <NavLink to={"/profile"} replace className="header__account">
             Аккаунт
           </NavLink>
           <BurgerButton handleOpenBurger={handleOpenBurger}></BurgerButton>

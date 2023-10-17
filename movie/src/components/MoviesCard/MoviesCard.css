@@ -65,6 +65,7 @@
   display: block;
   width: 100%;
   border-radius: 6px;
+  height: 201px;
 }
 
 .movies-card__name {
@@ -79,6 +80,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .movies-card__image {
+    height: 190px;
+  }
+
   .movies-card__description {
     margin-top: 25px;
     padding: 0;
@@ -99,5 +104,9 @@
   .movies-card__button {
     top: 10px;
     right: 10px;
+  }
+
+  .movies-card__image {
+    height: 168px;
   }
 }

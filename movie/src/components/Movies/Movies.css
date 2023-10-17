@@ -3,6 +3,16 @@
   margin: auto;
 }
 
+.movies__nothing {
+  display: block;
+  text-align: center;
+  height: 18vh;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.2;
+  color: #8b8b8b;
+}
+
 .movies__button-more {
   display: block;
   border-radius: 6px;
@@ -17,6 +27,10 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   width: 320px;
+}
+
+.movies__button-more_hide {
+  display: none;
 }
 
 .movies__button-more:hover {
