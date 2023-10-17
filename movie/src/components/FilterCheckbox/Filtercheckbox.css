@@ -1,0 +1,104 @@
+.filter__switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 14px;
+}
+
+.filter__switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.filter__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.filter__slider:before {
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  left: 3px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .filter__slider {
+  background-color: #3ddc84;
+}
+
+input:focus + .filter__slider {
+  box-shadow: 0 0 1px #3ddc84;
+}
+
+input:checked + .filter__slider:before {
+  -webkit-transform: translateX(18px);
+  -ms-transform: translateX(18px);
+  transform: translateX(18px);
+}
+
+.filter__slider.filter__round {
+  border-radius: 34px;
+}
+
+.filter__slider.filter__round:before {
+  border-radius: 50%;
+}
+
+.filter__text {
+  margin: 0;
+  margin-top: -2px;
+  color: white;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 4px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.filter__text:hover{
+  opacity: 70%;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  border-bottom: 1px solid #424242;
+  padding-bottom: 36px;
+  margin: 29px 70px 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .filter {
+    margin: 42px 30px 0px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .filter {
+    margin: 49px 14px 0px;
+    gap: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .filter__text {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+  }
+}
