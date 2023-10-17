@@ -7,10 +7,10 @@ import Promo from "../Promo/Promo";
 import Techs from "../Techs/Techs";
 import Header from "../Header/Header";
 
-function Main() {
+function Main({ isLogged }) {
   return (
     <>
-      <Header></Header>
+      <Header isLogged={isLogged}></Header>
       <main className="main">
         <Promo></Promo>
         <NavTab></NavTab>

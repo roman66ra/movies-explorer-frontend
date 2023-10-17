@@ -1,17 +1,19 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import convertingTime from "../../utils/durationConverter";
 
-function MoviesCard({ movieData }) {
+function MoviesCard({ movieData, onSave, onRemove }) {
   const { pathname } = useLocation();
   const [isSave, setIsSave] = useState(false);
   const [showToolTip, setShowToolTip] = useState(false);
 
   const saveMovieHandler = () => {
     setIsSave(true);
+    onSave();
   };
   const deleteMovieHandler = () => {
     setIsSave(false);
+    onRemove();
   };
 
   const onMouseEnterHandler = () => {
@@ -23,14 +25,20 @@ function MoviesCard({ movieData }) {
   };
 
   return (
-    <li className="movies-card">
-      <img
-        onMouseEnter={onMouseEnterHandler}
-        onMouseLeave={onMouseLeaveHandler}
-        className="movies-card__image"
-        alt={movieData.nameRU}
-        src={movieData.image}
-      />
+    <li key={movieData.id} className="movies-card">
+      <Link to={movieData.trailerLink} target="_blank">
+        <img
+          onMouseEnter={onMouseEnterHandler}
+          onMouseLeave={onMouseLeaveHandler}
+          className="movies-card__image"
+          alt={movieData.nameRU}
+          src={
+            pathname === "/movies"
+              ? `https://api.nomoreparties.co/${movieData.image.url}`
+              : `${movieData.image}`
+          }
+        />
+      </Link>
       <button
         onMouseEnter={onMouseEnterHandler}
         onMouseLeave={onMouseLeaveHandler}
@@ -38,11 +46,17 @@ function MoviesCard({ movieData }) {
         ${isSave ? "movies-card__button_type_save" : "movies-card__button "} 
         ${showToolTip ? "movies-card__button_type_save-show" : ""}`}
         type="button"
-        onClick={pathname === "/movies" ? saveMovieHandler : deleteMovieHandler}
+        onClick={
+          pathname === "/movies"
+            ? !isSave
+              ? saveMovieHandler
+              : deleteMovieHandler
+            : deleteMovieHandler
+        }
       >
         {pathname === "/movies" && !isSave ? "Сохранить" : null}
         {pathname === "/movies" && isSave ? "" : null}
-        {pathname === "/movies" ? null : "🞪"}
+        {pathname === "/saved-movies" ? "🞪" : null}
       </button>
 
       <div className="movies-card__description">
