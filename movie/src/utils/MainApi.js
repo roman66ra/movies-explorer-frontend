@@ -133,7 +133,5 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-  url: "http://localhost:3001",
+  url: "https://api.romanra.movie.nomoredomainsrocks.ru",
 });
-
-// https://api.romanra.movie.nomoredomainsrocks.ru
