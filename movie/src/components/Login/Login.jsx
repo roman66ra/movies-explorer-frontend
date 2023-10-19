@@ -13,8 +13,11 @@ export default function Login({ handleLogin, onTooltip }) {
     passwordErrorMessage: "",
   });
   const navigate = useNavigate();
-
+  const [isFormDisabled, setIsformDisabled] = useState(false)
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const login = (e) => {
+    setIsButtonDisabled(true)
+    setIsformDisabled(true)
     e.preventDefault();
     if (!formValue.email || !formValue.password) {
       return;
@@ -43,7 +46,11 @@ export default function Login({ handleLogin, onTooltip }) {
             isOpen: true,
           });
         }
-      });
+      })
+      .finally(() => {
+        setIsButtonDisabled(false)
+        setIsformDisabled(false)
+      })
   };
 
   return (
@@ -58,6 +65,9 @@ export default function Login({ handleLogin, onTooltip }) {
         linkText={"Регистрация"}
         text={"Ещё не зарегистрированы?"}
         submit={"Войти"}
+        setIsButtonDisabled={setIsButtonDisabled}
+        isButtonDisabled={isButtonDisabled}
+        isFormDisabled={isFormDisabled}
       ></SignForm>
     </main>
   );

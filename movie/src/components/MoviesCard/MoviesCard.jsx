@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import convertingTime from "../../utils/durationConverter";
 
-function MoviesCard({ movieData, onSave, onRemove }) {
+function MoviesCard({ movieData, onSave, onRemove, isSaved }) {
   const { pathname } = useLocation();
   const [isSave, setIsSave] = useState(false);
   const [showToolTip, setShowToolTip] = useState(false);
@@ -23,6 +23,14 @@ function MoviesCard({ movieData, onSave, onRemove }) {
   const onMouseLeaveHandler = () => {
     setShowToolTip(false);
   };
+
+  useEffect(() => {
+
+    if (pathname === '/movies') {
+      const result = isSaved.some((item) => (movieData.id) === item.movieId)
+      setIsSave(result);
+    }
+  }, [isSaved, pathname, movieData])
 
   return (
     <li key={movieData.id} className="movies-card">

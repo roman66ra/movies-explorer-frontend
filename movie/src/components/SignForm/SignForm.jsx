@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { isEmailValid, isNameValidation } from "../../utils/utils";
 
@@ -10,17 +10,20 @@ export default function SignForm({
   linkText,
   text,
   submit,
+  isButtonDisabled,
+  setIsButtonDisabled,
+  isFormDisabled
 }) {
   const { pathname } = useLocation();
 
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  
 
   const isNameValid = isNameValidation.test(formValue.name)
   const isValid = isEmailValid.test(formValue.email);
 
   useEffect(() => {
     const disabled =
-      pathname === ('/signup') ? !formValue.nameError : false ||
+      (pathname === ('/signup') ? !formValue.nameError : false) ||
       !formValue.emailError ||
       !formValue.passwordError ||
       !isValid;
@@ -44,6 +47,7 @@ export default function SignForm({
         autoComplete="off"
         name="sign"
         onSubmit={handleSubmit}
+        disabled={isFormDisabled}
       >
         {pathname === "/signin" ? (
           ""

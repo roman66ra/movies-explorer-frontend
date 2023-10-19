@@ -18,6 +18,7 @@ export default function MoviesCardList({ movies, onSave, onRemove, isSaved }) {
             }
             key={movie.id || _id}
             movieData={movie}
+            isSaved={isSaved}
           />
         ))}
       </ul>

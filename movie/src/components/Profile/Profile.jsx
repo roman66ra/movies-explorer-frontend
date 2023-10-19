@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import { isEmailValid, isNameValidation } from "../../utils/utils";
-import { mainApi } from "../../utils/MainApi";
 
-export default function Profile({ handleLogout, isLogged, user, onEdit }) {
+
+export default function Profile({ handleLogout, isLogged, user, onEdit, isFormDisabled, isButtonDisabled, setIsButtonDisabled }) {
   const profile = { name: user[0].name, email: user[0].email };
   const [nameValue, setNameValue] = useState({
     name: user[0].name,
@@ -16,7 +16,7 @@ export default function Profile({ handleLogout, isLogged, user, onEdit }) {
     emailErrorMessage: "",
   });
   const [edit, setEdit] = useState(false);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
 
   const isNameValid = isNameValidation.test(nameValue.name);
   const isValid = isEmailValid.test(emailValue.email);
@@ -76,7 +76,7 @@ export default function Profile({ handleLogout, isLogged, user, onEdit }) {
       <Header isLogged={isLogged}></Header>
       <main className="profile">
         <h1 className="profile__title">{`Привет, ${nameValue.name}!`}</h1>
-        <form className="profile__form" name="profile">
+        <form className="profile__form" name="profile" disabled={isFormDisabled}>
           <label className="profile__item">
             <span className="profile__text">Имя</span>
             <input

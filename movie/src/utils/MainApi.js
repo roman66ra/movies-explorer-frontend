@@ -116,11 +116,24 @@ class MainApi {
     });
   }
 
+  checkToken = (token) => {
+    return fetch(`${this._url}/users/me`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => this._checkServer(res))
+      .then((data) => data);
+  };
   _checkServer(res) {
     return res.ok ? res.json() : Promise.reject(`Ошибка ${res.status}`);
   }
 }
 
 export const mainApi = new MainApi({
-  url: "https://api.romanra.movie.nomoredomainsrocks.ru",
+  url: "http://localhost:3001",
 });
+
+// https://api.romanra.movie.nomoredomainsrocks.ru

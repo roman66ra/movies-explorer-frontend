@@ -11,8 +11,10 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { mainApi } from "../../utils/MainApi";
+import Preloader from "../Preloader/Preloader";
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [isLogged, setIsLogged] = useState(false);
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
@@ -21,7 +23,23 @@ export default function App() {
     text: "",
     isOpen: false,
   });
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isFormDisabled, setIsFormDisabled] = useState(false)
 
+  useEffect(() => {
+    handleTokenCheck();
+    Promise.all([mainApi.getUser(localStorage.getItem("token"))])
+      .then((result) => {
+        setIsLogged(true)
+        setCurrentUser(result);
+        setIsLoading(false)
+      })
+      .catch((err) => {
+        setIsLoading(false)
+        console.log(err)
+      });
+  }, [isLogged]);
+  
   const handleCloseTooltip = () => {
     setTooltip({ ...tooltip, isOpen: false });
   };
@@ -33,7 +51,7 @@ export default function App() {
   function handleLogout() {
     localStorage.clear();
     setIsLogged(false);
-    navigate("/signin", { replace: true });
+    navigate("/", { replace: true });
   }
 
   const handleTokenCheck = () => {
@@ -43,7 +61,6 @@ export default function App() {
         .getUser(token)
         .then((res) => {
           if (res) {
-            navigate("/movies", { replace: true });
             setIsLogged(true);
           }
         })
@@ -58,6 +75,7 @@ export default function App() {
   };
 
   const handleEditProfile = (name, email) => {
+    setIsFormDisabled(true)
     const token = localStorage.getItem("token");
     mainApi
       .editProfile(name, email, token)
@@ -71,23 +89,18 @@ export default function App() {
       })
       .catch((res) =>
         setTooltip({ isOpen: true, statusOk: false, text: "Произошла ошибка" })
-      );
+      )
+      .finally(() => {
+        setIsFormDisabled(false)
+      })
   };
 
-  useEffect(() => {
-    handleTokenCheck();
-    Promise.all([mainApi.getUser(localStorage.getItem("token"))])
-      .then((result) => {
-        setCurrentUser(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [isLogged]);
+
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <div className="body">
+    <div className="body">
+    {isLoading ? <Preloader/> :
+    <CurrentUserContext.Provider value={currentUser}>  
         <Routes>
           <Route path="/" element={<Main isLogged={isLogged} />} />
           <Route
@@ -135,12 +148,15 @@ export default function App() {
                 isLogged={isLogged}
                 user={currentUser}
                 onEdit={handleEditProfile}
+                isFormDisabled={isFormDisabled}
+                isButtonDisabled={isButtonDisabled}
+                setIsButtonDisabled={setIsButtonDisabled}
               />
             }
           />
           <Route path="*" element={<PageNotFound></PageNotFound>} />
         </Routes>
-      </div>
+
       <Tooltip
         state={tooltip.state}
         text={tooltip.text}
@@ -148,5 +164,7 @@ export default function App() {
         onClose={handleCloseTooltip}
       ></Tooltip>
     </CurrentUserContext.Provider>
+}</div>
+   
   );
 }

@@ -12,14 +12,16 @@ import { moviesApi } from "../../utils/MoviesApi";
 import Preloader from "../Preloader/Preloader";
 import { mainApi } from "../../utils/MainApi";
 
-function Movies({ isLogged, onTooltip }) {
+export default function Movies({ isLogged, onTooltip }) {
   const { width } = useWindowSize();
   const pathname = useLocation().pathname;
   const [isNothing, setIsNothing] = useState(false);
   const [hideButtonMore, setHideButtonMore] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [savedMovie, setSavedMovie] = useState([]);
+  const [savedMovie, setSavedMovie] = useState(
+    JSON.parse(localStorage.getItem("savedMovie")) || []
+  );
   const [isShort, setIsShort] = useState(() => {
     if (pathname.pathname === "/movies") {
       return JSON.parse(localStorage.getItem("short"));
@@ -31,13 +33,17 @@ function Movies({ isLogged, onTooltip }) {
   const [numberMoviesDisplayed, setNubmerMoviesDislpayed] = useState(
     getNumberMovies().defaultMovies
   );
+  const [movies, setMovies] = useState([]);
+  const [startSearch, setStartSearch] = useState(false);
 
-  const [movies, setMovies] = useState(() => {
-    const arr = getMovies();
-    return arr;
-  });
-
+  useEffect(() => {
+    if (startSearch === false) {
+      setMovies(getMovies())
+    }
+  }, [startSearch])
+  
   function getMovies() {
+    setStartSearch(true);
     setIsLoading(true);
     return moviesApi
       .getAllMovies()
@@ -56,6 +62,7 @@ function Movies({ isLogged, onTooltip }) {
 
   function handleShort() {
     setIsShort(!isShort);
+    searchMovies(localStorage.getItem("localSearchText"), !isShort);
   }
   //Функция нажатия на кнопку еще, увеличивающая значение при нажатии
   const handleMoreMovies = () => {
@@ -68,6 +75,7 @@ function Movies({ isLogged, onTooltip }) {
   const moviesForRender = filteredMovies.slice(0, numberMoviesDisplayed);
 
   const searchMovies = (searchText, short) => {
+    setStartSearch(true)
     //если запрос пустой
     if (searchText === "") {
       onTooltip({
@@ -80,6 +88,8 @@ function Movies({ isLogged, onTooltip }) {
       localStorage.setItem("localSearchText", searchText); //сохраняем локально запрос
       localStorage.setItem("short", JSON.parse(short));
     }
+    setNubmerMoviesDislpayed(getNumberMovies().defaultMovies);
+
     //устанавливаем отфильтрованный список
     const filteredMovie = movies.filter((movie) =>
       filterMovies(movie, searchText, short)
@@ -189,7 +199,7 @@ function Movies({ isLogged, onTooltip }) {
               onRemove={handleRemove}
               isSaved={savedMovie}
             ></MoviesCardList>
-            {isNothing ? (
+            {isNothing && startSearch? (
               <span className="movies__nothing">Ничего не найдено</span>
             ) : (
               ""
@@ -212,5 +222,3 @@ function Movies({ isLogged, onTooltip }) {
     </>
   );
 }
-
-export default Movies;

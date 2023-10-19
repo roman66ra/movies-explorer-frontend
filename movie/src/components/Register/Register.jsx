@@ -16,8 +16,11 @@ function Register({ onTooltip, setCurrentUser, onLogin }) {
     emailErrorMessage: "",
     passwordErrorMessage: "",
   });
-
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isFormDisabled, setIsformDisabled] = useState(false)
   const handleSubmit = (e) => {
+    setIsButtonDisabled(true)
+    setIsformDisabled(true)
     e.preventDefault();
     if (!formValue.name || !formValue.email || !formValue.password) {
       return;
@@ -67,7 +70,11 @@ function Register({ onTooltip, setCurrentUser, onLogin }) {
             isOpen: true,
           });
         }
-      });
+      })
+      .finally(() => {
+        setIsformDisabled(false)
+        setIsButtonDisabled(false)
+      })
   };
 
   return (
@@ -82,6 +89,9 @@ function Register({ onTooltip, setCurrentUser, onLogin }) {
         linkText={"Войти"}
         text={"Уже зарегистрированы?"}
         submit={"Зарегистрироваться"}
+        isButtonDisabled={isButtonDisabled}
+        setIsButtonDisabled={setIsButtonDisabled}
+        isFormDisabled={isFormDisabled}
       ></SignForm>
     </main>
   );

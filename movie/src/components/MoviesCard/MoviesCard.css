@@ -102,6 +102,7 @@
   }
 
   .movies-card__button {
+    display: block;
     top: 10px;
     right: 10px;
   }
