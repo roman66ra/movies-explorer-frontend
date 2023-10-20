@@ -200,7 +200,7 @@ export default function Movies({ isLogged, onTooltip }) {
               onRemove={handleRemove}
               isSaved={savedMovie}
             ></MoviesCardList>
-            {isNothing && !startSearch? (
+            {isNothing && startSearch===false? (
               <span className="movies__nothing">Ничего не найдено</span>
             ) : (
               ""
