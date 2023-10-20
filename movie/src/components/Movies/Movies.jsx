@@ -36,29 +36,6 @@ export default function Movies({ isLogged, onTooltip }) {
   const [movies, setMovies] = useState([]);
   const [startSearch, setStartSearch] = useState(false);
 
-  useEffect(() => {
-    if (startSearch === false) {
-      setMovies(getMovies())
-    }
-  }, [startSearch])
-  
-  function getMovies() {
-    setStartSearch(true);
-    setIsLoading(true);
-    return moviesApi
-      .getAllMovies()
-      .then((res) => {
-        setMovies(res);
-      })
-      .catch((err) =>
-        onTooltip({
-          statusOk: false,
-          text: "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз",
-          isOpen: true,
-        })
-      )
-      .finally(() => setIsLoading(false));
-  }
 
   function handleShort() {
     setIsShort(!isShort);
@@ -75,7 +52,6 @@ export default function Movies({ isLogged, onTooltip }) {
   const moviesForRender = filteredMovies.slice(0, numberMoviesDisplayed);
 
   const searchMovies = (searchText, short) => {
-    setStartSearch(true)
     //если запрос пустой
     if (searchText === "") {
       onTooltip({
@@ -88,22 +64,47 @@ export default function Movies({ isLogged, onTooltip }) {
       localStorage.setItem("localSearchText", searchText); //сохраняем локально запрос
       localStorage.setItem("short", JSON.parse(short));
     }
+    
     setNubmerMoviesDislpayed(getNumberMovies().defaultMovies);
-
+    if (movies.length === 0 && startSearch===false) {
+        setStartSearch(true);
+        setIsLoading(true);
+        moviesApi
+          .getAllMovies()
+          .then((res) => {
+            setMovies(res);
+            const filteredMovie = res.filter((movie) =>
+            filterMovies(movie, searchText, short)
+          );
+      
+          localStorage.setItem("localMovie", JSON.stringify(filteredMovie));
+          setFilteredMovies(filteredMovie);
+          })
+          .catch((err) =>
+            onTooltip({
+              statusOk: false,
+              text: "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз",
+              isOpen: true,
+            })
+          )
+          .finally(() => setIsLoading(false));
+    }
     //устанавливаем отфильтрованный список
+    else {
     const filteredMovie = movies.filter((movie) =>
       filterMovies(movie, searchText, short)
     );
 
     localStorage.setItem("localMovie", JSON.stringify(filteredMovie));
     setFilteredMovies(filteredMovie);
-  };
+  }}
 
   function handleSaveMovie(movie) {
     return mainApi
       .saveMovie(movie, localStorage.getItem("token"))
       .then((res) => {
         setSavedMovie([...savedMovie, res]);
+        console.log(savedMovie)
       })
       .catch((err) => console.log(err));
   }
@@ -199,7 +200,7 @@ export default function Movies({ isLogged, onTooltip }) {
               onRemove={handleRemove}
               isSaved={savedMovie}
             ></MoviesCardList>
-            {isNothing && startSearch? (
+            {isNothing && !startSearch? (
               <span className="movies__nothing">Ничего не найдено</span>
             ) : (
               ""

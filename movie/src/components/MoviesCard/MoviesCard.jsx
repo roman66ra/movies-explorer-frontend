@@ -51,7 +51,8 @@ function MoviesCard({ movieData, onSave, onRemove, isSaved }) {
         onMouseEnter={onMouseEnterHandler}
         onMouseLeave={onMouseLeaveHandler}
         className={`
-        ${isSave ? "movies-card__button_type_save" : "movies-card__button "} 
+        ${isSave ? "movies-card__button_type_save" : "movies-card__button "}
+        ${pathname ==='/saved-movies'? "movies-card__button_type_delete" : "movies-card__button"} 
         ${showToolTip ? "movies-card__button_type_save-show" : ""}`}
         type="button"
         onClick={
@@ -64,7 +65,7 @@ function MoviesCard({ movieData, onSave, onRemove, isSaved }) {
       >
         {pathname === "/movies" && !isSave ? "Сохранить" : null}
         {pathname === "/movies" && isSave ? "" : null}
-        {pathname === "/saved-movies" ? "🞪" : null}
+        {pathname === "/saved-movies" ? "" : null}
       </button>
 
       <div className="movies-card__description">
